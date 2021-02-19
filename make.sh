@@ -115,8 +115,15 @@ function compile ()
 
 function brew ()
 {
-	echo "brew command is broken. Use --brew-unpublished or brew from WorkshopUploadToolGUI instead of this."
-	# CMD //C "$(unixpath2win "$KFEditor")" brewcontent -platform=PC ServerExt ServerExtMut -useunpublished
+	if [[ -e "$KFEditorMergePkgs" ]]; then
+		rm -rf "$MutPublish" && mkdir -p "$MutPublish"
+		cp -f "$MutStructPackages/FriendlyHUDAssets.upk" "$MutStructScript/GzFriendlyHUD.u" "$KFBin/Win64"
+		CMD //C "$(unixpath2win "$KFEditorMergePkgs")" make FriendlyHUDAssets.upk GzFriendlyHUD.u
+		rm -f "$KFBin/Win64/FriendlyHUDAssets.upk"
+		mv -f "$KFBin/Win64/GzFriendlyHUD.u" "$MutPublish"
+	else
+		brew_unpublished
+	fi
 }
 
 function brew_unpublished ()
@@ -183,6 +190,7 @@ DocumentsPath=$(reg_readkey "HKEY_CURRENT_USER\Software\Microsoft\Windows\Curren
 KFPath="$SteamPath/steamapps/common/killingfloor2"
 KFBin="$KFPath/Binaries"
 KFEditor="$KFBin/Win64/KFEditor.exe"
+KFEditorMergePkgs="$KFBin/Win64/KFEditor_mergepackages.exe"
 KFGame="$KFBin/Win64/KFGame.exe"
 KFWorkshop="$KFBin/WorkshopUserTool.exe"
 
