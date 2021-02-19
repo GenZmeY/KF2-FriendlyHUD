@@ -71,7 +71,7 @@ function FHUDSetCDStateReady(array<string> Params)
     CurrentRepInfo = FHUDMutator.RepInfo;
     while (CurrentRepInfo != None)
     {
-        for (I = 0; I < class'FriendlyHUD.FriendlyHUDReplicationInfo'.const.REP_INFO_COUNT; I++)
+        for (I = 0; I < class'GzFriendlyHUD.FriendlyHUDReplicationInfo'.const.REP_INFO_COUNT; I++)
         {
             KFPRI = CurrentRepInfo.KFPRIArray[I];
             if (KFPRI != None && KFPRI.PlayerID == PlayerId)

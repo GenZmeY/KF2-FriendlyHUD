@@ -49,11 +49,11 @@ simulated event PostBeginPlay()
     {
         UMLoaded = IsUMLoaded();
 
-        RepInfo = Spawn(class'FriendlyHUD.FriendlyHUDReplicationInfo', Self);
+        RepInfo = Spawn(class'GzFriendlyHUD.FriendlyHUDReplicationInfo', Self);
         RepInfo.FHUDMutator = Self;
         RepInfo.HUDConfig = HUDConfig;
 
-        CDCompat = Spawn(class'FriendlyHUD.FriendlyHUDCDCompatController', Self);
+        CDCompat = Spawn(class'GzFriendlyHUD.FriendlyHUDCDCompatController', Self);
         CDCompat.FHUDMutator = Self;
 
         SetTimer(2.f, true, nameof(CheckBots));
@@ -90,7 +90,7 @@ simulated function InitializeHUD()
     `Log("[FriendlyHUD] Found KFPC");
 
     // Initialize the HUD configuration
-    HUDConfig = new (KFPC) class'FriendlyHUD.FriendlyHUDConfig';
+    HUDConfig = new (KFPC) class'GzFriendlyHUD.FriendlyHUDConfig';
     HUDConfig.FHUDMutator = Self;
     HUDConfig.KFPlayerOwner = KFPC;
     KFPC.Interactions.AddItem(HUDConfig);
@@ -110,7 +110,7 @@ simulated function InitializeDeferred()
     }
 
     // Initialize the HUD interaction
-    FHUDInteraction = new (KFPC) class'FriendlyHUD.FriendlyHUDInteraction';
+    FHUDInteraction = new (KFPC) class'GzFriendlyHUD.FriendlyHUDInteraction';
     FHUDInteraction.FHUDMutator = Self;
     FHUDInteraction.KFPlayerOwner = KFPC;
     FHUDInteraction.HUD = HUD;
@@ -165,7 +165,7 @@ simulated function InitializeCompat()
 
     HUDConfig.InitUMCompat();
 
-    UMInteraction = new (KFPC) class'FriendlyHUD.UMCompatInteraction';
+    UMInteraction = new (KFPC) class'GzFriendlyHUD.UMCompatInteraction';
     UMInteraction.KFPlayerOwner = KFPC;
     UMInteraction.HUD = HUD;
     UMInteraction.HUDConfig = HUDConfig;
@@ -359,7 +359,7 @@ simulated function ForceUpdateNameCache()
     CurrentRepInfo = RepInfo;
     while (CurrentRepInfo != None)
     {
-        for (I = 0; I < class'FriendlyHUD.FriendlyHUDReplicationInfo'.const.REP_INFO_COUNT; I++)
+        for (I = 0; I < class'GzFriendlyHUD.FriendlyHUDReplicationInfo'.const.REP_INFO_COUNT; I++)
         {
             if (CurrentRepInfo.KFPRIArray[I] == None) continue;
             CurrentRepInfo.ShouldUpdateNameArray[I] = 1;

@@ -89,7 +89,7 @@ function FriendlyHUDReplicationLink GetRepLink()
 {
     local FriendlyHUDReplicationLink RepLink;
 
-    foreach KFPlayerOwner.WorldInfo.DynamicActors(class'FriendlyHUD.FriendlyHUDReplicationLink', RepLink)
+    foreach KFPlayerOwner.WorldInfo.DynamicActors(class'GzFriendlyHUD.FriendlyHUDReplicationLink', RepLink)
     {
         return RepLink;
     }
@@ -557,7 +557,7 @@ function UpdateNames()
     RepInfo = FHUDMutator.RepInfo;
     while (RepInfo != None)
     {
-        for (I = 0; I < class'FriendlyHUD.FriendlyHUDReplicationInfo'.const.REP_INFO_COUNT; I++)
+        for (I = 0; I < class'GzFriendlyHUD.FriendlyHUDReplicationInfo'.const.REP_INFO_COUNT; I++)
         {
             if (RepInfo.KFPRIArray[I] == None) continue;
 
@@ -585,7 +585,7 @@ function UpdatePRIArray()
     RepInfo = FHUDMutator.RepInfo;
     while (RepInfo != None)
     {
-        for (I = 0; I < class'FriendlyHUD.FriendlyHUDReplicationInfo'.const.REP_INFO_COUNT; I++)
+        for (I = 0; I < class'GzFriendlyHUD.FriendlyHUDReplicationInfo'.const.REP_INFO_COUNT; I++)
         {
             if (RepInfo.KFPRIArray[I] == None) continue;
 
@@ -870,7 +870,7 @@ function UpdateRuntimeVars(optional Canvas Canvas)
     CachedScreenHeight = Canvas.SizeY;
 
     Canvas.Font = class'KFGameEngine'.static.GetKFCanvasFont();
-    R.ResScale = class'FriendlyHUD.FriendlyHUDHelper'.static.GetResolutionScale(Canvas);
+    R.ResScale = class'GzFriendlyHUD.FriendlyHUDHelper'.static.GetResolutionScale(Canvas);
     R.Scale = R.ResScale * HUDConfig.Scale;
 
     R.NameScale = class'KFGameEngine'.static.GetKFFontScale() * HUDConfig.NameScale * R.Scale;
@@ -1535,7 +1535,7 @@ function bool DrawHealthBarItem(Canvas Canvas, const out PlayerItemInfo ItemInfo
 
         if (ManualModeCurrentPRI.KFPRI == ItemInfo.KFPRI)
         {
-            class'FriendlyHUD.FriendlyHUDHelper'.static.DrawSelection(
+            class'GzFriendlyHUD.FriendlyHUDHelper'.static.DrawSelection(
                 Canvas,
                 SelectionPosX,
                 SelectionPosY,
@@ -1832,7 +1832,7 @@ function DrawBar(
 
         if (HUDConfig.DrawDebugRatios)
         {
-            DebugRatioText = class'FriendlyHUD.FriendlyHUDHelper'.static.FloatToString(P1 * BlockRatio, 2) $ "/" $ class'FriendlyHUD.FriendlyHUDHelper'.static.FloatToString(BlockRatio, 2);
+            DebugRatioText = class'GzFriendlyHUD.FriendlyHUDHelper'.static.FloatToString(P1 * BlockRatio, 2) $ "/" $ class'GzFriendlyHUD.FriendlyHUDHelper'.static.FloatToString(BlockRatio, 2);
             SetCanvasColor(Canvas, MakeColor(202, 44, 146, 255));
             Canvas.TextSize(DebugRatioText, DebugRatioWidth, DebugRatioHeight, 0.6f, 0.6f);
             Canvas.SetPos(BlockOffsetX + CurrentBlockPosX, BlockOffsetY + CurrentBlockPosY + CurrentBlockHeight - DebugRatioHeight);

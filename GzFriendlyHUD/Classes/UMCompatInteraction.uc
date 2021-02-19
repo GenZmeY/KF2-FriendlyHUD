@@ -160,7 +160,7 @@ function DrawMedicWeaponRecharge(Canvas Canvas)
 
     MedicWeaponCount = 0;
 
-    ResScale = class'FriendlyHUD.FriendlyHUDHelper'.static.GetResolutionScale(Canvas, false);
+    ResScale = class'GzFriendlyHUD.FriendlyHUDHelper'.static.GetResolutionScale(Canvas, false);
     IconHeight = default.MedicWeaponHeight * ResScale;
     IconWidth = IconHeight / 2.f;
 

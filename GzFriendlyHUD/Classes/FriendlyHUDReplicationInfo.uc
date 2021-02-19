@@ -104,7 +104,7 @@ function NotifyLogin(Controller C)
 
             if (KFPlayerController(C) != None)
             {
-                RepLinkArray[I] = Spawn(class'FriendlyHUD.FriendlyHUDReplicationLink', C);
+                RepLinkArray[I] = Spawn(class'GzFriendlyHUD.FriendlyHUDReplicationLink', C);
                 RepLinkArray[I].KFPC = KFPlayerController(C);
             }
 
@@ -116,7 +116,7 @@ function NotifyLogin(Controller C)
     // No empty spot, pass to NextRepInfo
     if (NextRepInfo == None)
     {
-        NextRepInfo = Spawn(class'FriendlyHUD.FriendlyHUDReplicationInfo', Owner);
+        NextRepInfo = Spawn(class'GzFriendlyHUD.FriendlyHUDReplicationInfo', Owner);
         NextRepInfo.FHUDMutator = FHUDMutator;
         NextRepInfo.HUDConfig = HUDConfig;
         NextRepInfo.PreviousRepInfo = Self;
